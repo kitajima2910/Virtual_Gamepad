@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Web Virtual Gamepad</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author>Phạm Xuân Hoài</author>
+    <author-email>kitajima2910@gmail.com</author-email>
+    <author-website>https://pxh2910.io.vn</author-website>
+    <app-id>com.pxh2910.wvg</app-id>
+    <unique-id>2m2oqhlgof90t</unique-id>
+    <saved-with-version>28000</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>932</width>
+        <height>430</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox integer scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Orientations">Landscape</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="Background" sid="719759767635072">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="2" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="327480537745838" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch" sid="825856440142813">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="Browser" sid="417809239800983">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="Player" sid="175025925332404">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="BoundToLayout" sid="159069025714909">
+                    <behavior id="bound" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="705590510126342" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Dpad" sid="255797991192074">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="422528836182510" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.479675" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Dpad.png">
+                        <image-point name="Imagepoint 1" x="0.5" y="0.170732" />
+                        <image-point name="Imagepoint 2" x="0.5" y="0.821138" />
+                        <image-point name="Imagepoint 3" x="0.163934" y="0.495935" />
+                        <image-point name="Imagepoint 4" x="0.827869" y="0.495935" />
+                        <collision-poly>
+                            <point x="0.327869" y="0.308944" />
+                            <point x="0.5" y="0.00813008" />
+                            <point x="0.672132" y="0.308944" />
+                            <point x="0.991803" y="0.479675" />
+                            <point x="0.688525" y="0.666667" />
+                            <point x="0.5" y="0.98374" />
+                            <point x="0.311476" y="0.666667" />
+                            <point x="0.00819672" y="0.479675" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Dpad_Up" sid="241487711419478">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="150223063455006" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.444444" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Dpad_Up.png">
+                        <collision-poly>
+                            <point x="0" y="0.822224" />
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.822224" />
+                            <point x="1" y="1" />
+                            <point x="1" y="1" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="162750831165558">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="T_X_A_Color" sid="452383004837238">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="448005050586329" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_A_Color.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_A_White" sid="431698376949504">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="446688992333691" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_A_White.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_B_Color" sid="469086609298195">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="894057041003680" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_B_Color.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_B_White" sid="371827740402283">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="480222749890724" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_B_White.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_X_Color" sid="194933882157282">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="529708874294886" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_X_Color.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_X_White" sid="527599148928701">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="741317085212121" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_X_White.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Y_Color" sid="244388626412075">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="972235456393973" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Y_Color.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Y_White" sid="769842598514101">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="813646768982333" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Y_White.png">
+                        <collision-poly>
+                            <point x="0.153061" y="0.153061" />
+                            <point x="0.5" y="0.0102041" />
+                            <point x="0.846939" y="0.153061" />
+                            <point x="0.989796" y="0.5" />
+                            <point x="0.846939" y="0.846939" />
+                            <point x="0.5" y="0.989796" />
+                            <point x="0.153061" y="0.846939" />
+                            <point x="0.0102041" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Dpad_Down" sid="960009405630654">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="474856367351861" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.555556" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Dpad_Up.png">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="0" y="0" />
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.177776" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.177776" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Dpad_Left" sid="335761211825865">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="651636730808968" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.555556" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Dpad_Up.png">
+                        <collision-poly>
+                            <point x="0" y="0" />
+                            <point x="0" y="0" />
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0" />
+                            <point x="1" y="0.177776" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="0.177776" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="T_X_Dpad_Right" sid="649120452327830">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="742222659794936" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.444444" original-source="C:\Users\Admin\Downloads\InputPromptsPack_V7_UnrealPack\Source\XGamepad\Default\T_X_Dpad_Up.png">
+                        <collision-poly>
+                            <point x="0" y="0.822224" />
+                            <point x="0.5" y="0" />
+                            <point x="1" y="0.822224" />
+                            <point x="1" y="1" />
+                            <point x="1" y="1" />
+                            <point x="0.5" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0" y="1" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="lock" sid="623814715793254">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="818564090779189" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\lock.png">
+                        <collision-poly>
+                            <point x="0.146484" y="0.146484" />
+                            <point x="0.5" y="0" />
+                            <point x="0.853516" y="0.146484" />
+                            <point x="1" y="0.5" />
+                            <point x="0.853516" y="0.853516" />
+                            <point x="0.5" y="1" />
+                            <point x="0.146484" y="0.853516" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="unlock" sid="214768023175917">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="615877032204509" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\open.png">
+                        <collision-poly>
+                            <point x="0.195313" y="0.195313" />
+                            <point x="0.5" y="0.00390625" />
+                            <point x="0.71875" y="0.28125" />
+                            <point x="0.810547" y="0.5" />
+                            <point x="0.814453" y="0.814453" />
+                            <point x="0.5" y="1" />
+                            <point x="0.0878906" y="0.912109" />
+                            <point x="0.0898438" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="showCount" sid="988420266427358">
+            <plugin id="Text" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Main_LO.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Main_ES.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Touch" uid="6">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Browser" uid="7" />
+        <global-instance type="Function" uid="14" />
+    </global-instances>
+    <sounds-folder />
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

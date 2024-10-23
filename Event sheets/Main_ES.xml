@@ -1,0 +1,1065 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Main_ES</name>
+    <events>
+        <variable constant="0" name="STEP" sid="435846276306478" static="0" type="number">5</variable>
+        <variable constant="0" name="count" sid="186748266860719" static="0" type="number">0</variable>
+        <comment>Các biến D-Pad</comment>
+        <variable constant="0" name="DPadUP_HOLD" sid="623711085976298" static="0" type="number">0</variable>
+        <variable constant="0" name="DPadDOWN_HOLD" sid="113943010885481" static="0" type="number">0</variable>
+        <variable constant="0" name="DPadLEFT_HOLD" sid="381996845499368" static="0" type="number">0</variable>
+        <variable constant="0" name="DPadRIGHT_HOLD" sid="328305088806629" static="0" type="number">0</variable>
+        <comment>Các biến A, B, X, Y</comment>
+        <variable constant="0" name="A_HOLD" sid="814667144231074" static="0" type="number">0</variable>
+        <variable constant="0" name="B_HOLD" sid="827040471888847" static="0" type="number">0</variable>
+        <variable constant="0" name="X_HOLD" sid="711128826821358" static="0" type="number">0</variable>
+        <variable constant="0" name="Y_HOLD" sid="717478383997500" static="0" type="number">0</variable>
+        <event-group description="" sid="686660731372761" title="Init">
+            <sub-events>
+                <event-block sid="507375604830685">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="152677351312500" type="System" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="230246977457964">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Call function" sid="892604071069309" type="Function">
+                                    <param id="0" name="Name">&quot;positionDPad_White&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="435529406855914" type="Function">
+                                    <param id="0" name="Name">&quot;positionABXY_White&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="396554169731724" title="D-Pad">
+            <sub-events>
+                <comment>D-Pad UP</comment>
+                <event-block sid="927781980526757">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="580863252890329" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Up</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="567660447420088" type="T_X_Dpad_Up">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="424123826765678">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="969202657597287" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Up</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="635271598841114" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="584030350461614" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad UP pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="239417855661607" type="Player">
+                                    <param id="0" name="Y">Self.Y - STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="350931739285859">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="378023246766871" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Up</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="189724386294885" type="System">
+                                    <param id="0" name="Variable">DPadUP_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="338651711794278">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="671501592916009" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Up</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="800823319876318" type="System">
+                                    <param id="0" name="First value">DPadUP_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="786683787651555" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="899828298763411" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad UP held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="327820428340778" type="Player">
+                                    <param id="0" name="Y">Self.Y - STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="973077158961713">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="900666401267516" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Up</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="527913489560466" type="T_X_Dpad_Up">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="993966931805374" type="T_X_Dpad_Up">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="348774594811365" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: Dpad UP released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="290821788019973" type="System">
+                            <param id="0" name="Variable">DPadUP_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>D-Pad DOWN</comment>
+                <event-block sid="717455192892510">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="209750609475541" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Down</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="356902661238646" type="T_X_Dpad_Down">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="941988022748132">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="554061194676944" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Down</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="725000970678146" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="662991870400234" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad DOWN pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="269956281556896" type="Player">
+                                    <param id="0" name="Y">Self.Y + STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="423738982910672">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="897213796549373" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Down</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="838553132591209" type="System">
+                                    <param id="0" name="Variable">DPadDOWN_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="517023840871566">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="781126661541568" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Down</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="522382887078930" type="System">
+                                    <param id="0" name="First value">DPadDOWN_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="240993087113395" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="624862129974952" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad DOWN held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-2" name="Set Y" sid="430920280085065" type="Player">
+                                    <param id="0" name="Y">Self.Y + STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="377734642677538">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="728058064899686" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Down</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="330183877534758" type="T_X_Dpad_Down">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="118836608003474" type="T_X_Dpad_Down">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="298315390328943" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: Dpad DOWN released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="308133039660754" type="System">
+                            <param id="0" name="Variable">DPadDOWN_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>D-Pad LEFT</comment>
+                <event-block sid="844286539239837">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="491515493298358" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Left</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="829686096371498" type="T_X_Dpad_Left">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="615963752049702">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="805209144641949" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Left</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="881184843237434" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="134250945983847" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad LEFT pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="586527767191061" type="Player">
+                                    <param id="0" name="X">Self.X - STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="528788504689454">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="972393088070469" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Left</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="242794303925450" type="System">
+                                    <param id="0" name="Variable">DPadLEFT_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="883424760523635">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="543675199920099" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Left</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="746705006428361" type="System">
+                                    <param id="0" name="First value">DPadLEFT_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="765353127188996" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="250998434386145" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad LEFT held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="472109897087766" type="Player">
+                                    <param id="0" name="X">Self.X - STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="430686912676913">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="928843883341345" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Left</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="850790413084953" type="T_X_Dpad_Left">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="469301546757584" type="T_X_Dpad_Left">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="199050430818236" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: Dpad LEFT released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="455071465697889" type="System">
+                            <param id="0" name="Variable">DPadLEFT_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>D-Pad RIGHT</comment>
+                <event-block sid="988898472031777">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="853815334797321" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Right</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="735820460384912" type="T_X_Dpad_Right">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="872033161214865">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="911430049620739" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Right</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="895403782638104" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="794910571132498" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad RIGHT pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="463547793248610" type="Player">
+                                    <param id="0" name="X">Self.X + STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="385192748373348">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="104873339878141" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Right</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="851604972399740" type="System">
+                                    <param id="0" name="Variable">DPadRIGHT_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="346996489759537">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="642687544491320" type="Touch">
+                                    <param id="0" name="Object">T_X_Dpad_Right</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="186605628660031" type="System">
+                                    <param id="0" name="First value">DPadRIGHT_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="126135896158141" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="340313188726551" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad RIGHT held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="-1" name="Set X" sid="863176112946817" type="Player">
+                                    <param id="0" name="X">Self.X + STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="407768351996385">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="149333879605286" type="Touch">
+                            <param id="0" name="Object">T_X_Dpad_Right</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="716697872301180" type="T_X_Dpad_Right">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="393185320262358" type="T_X_Dpad_Right">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="221985325912275" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: Dpad RIGHT released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="369581615731006" type="System">
+                            <param id="0" name="Variable">DPadRIGHT_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="772551690243931" title="A, B, X, Y">
+            <sub-events>
+                <comment>A</comment>
+                <event-block sid="247855613319515">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="666401583177387" type="Touch">
+                            <param id="0" name="Object">T_X_A_White</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="461540670322054" type="T_X_A_White">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="147290408932964">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="420000528801184" type="Touch">
+                                    <param id="0" name="Object">T_X_A_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="536359550910454" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="626380400969173" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: A pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="654835890833901" type="Player">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="436145665632710">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="403565350497898" type="Touch">
+                                    <param id="0" name="Object">T_X_A_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="292492919002737" type="System">
+                                    <param id="0" name="Variable">A_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="383545986873617">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="652855948077263" type="Touch">
+                                    <param id="0" name="Object">T_X_A_White</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="240931395980657" type="System">
+                                    <param id="0" name="First value">A_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="291480969499018" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="141249827627054" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: A held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="168199461760601" type="Player">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="655521532682834">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="852691596482533" type="Touch">
+                            <param id="0" name="Object">T_X_A_White</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="494028040075088" type="T_X_A_White">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="391714134941339" type="T_X_A_White">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="603581074750567" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: A released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="645496970482576" type="System">
+                            <param id="0" name="Variable">A_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="888955051274759" type="Player">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>B</comment>
+                <event-block sid="528201761523725">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="932180439760811" type="Touch">
+                            <param id="0" name="Object">T_X_B_White</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="665865734030900" type="T_X_B_White">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="685853748047490">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="189433079180199" type="Touch">
+                                    <param id="0" name="Object">T_X_B_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="419792731930485" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="436849491291000" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: B pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="732407940238920" type="Player">
+                                    <param id="0" name="Frame number">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="345873368813375">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="347650533561837" type="Touch">
+                                    <param id="0" name="Object">T_X_B_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="288050337443176" type="System">
+                                    <param id="0" name="Variable">B_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="825402097784238">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="923235302392608" type="Touch">
+                                    <param id="0" name="Object">T_X_B_White</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="659541380128427" type="System">
+                                    <param id="0" name="First value">B_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="744066384542921" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="576771371333945" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: B held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="625170835682287" type="Player">
+                                    <param id="0" name="Frame number">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="979524140255335">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="689110129013328" type="Touch">
+                            <param id="0" name="Object">T_X_B_White</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="143156084512406" type="T_X_B_White">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="632770282625780" type="T_X_B_White">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="984660201923658" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: B released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="553231536911500" type="System">
+                            <param id="0" name="Variable">B_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="209975110127119" type="Player">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>X</comment>
+                <event-block sid="145847035751847">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="876218070608084" type="Touch">
+                            <param id="0" name="Object">T_X_X_White</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="348444464406000" type="T_X_X_White">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="853617716948988">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="222321642672732" type="Touch">
+                                    <param id="0" name="Object">T_X_X_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="876460492119124" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="436118804657693" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: X pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="264825941967325" type="Player">
+                                    <param id="0" name="Frame number">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="769562055923456">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="305454918288595" type="Touch">
+                                    <param id="0" name="Object">T_X_X_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="608378243867033" type="System">
+                                    <param id="0" name="Variable">X_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="383676573270696">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="332868866670940" type="Touch">
+                                    <param id="0" name="Object">T_X_X_White</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="102023864507333" type="System">
+                                    <param id="0" name="First value">X_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="903880318733336" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="117058575154313" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: X held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="444877275236305" type="Player">
+                                    <param id="0" name="Frame number">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="716389664798525">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="655144221920332" type="Touch">
+                            <param id="0" name="Object">T_X_X_White</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="263397216952038" type="T_X_X_White">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="540707953582834" type="T_X_X_White">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="292008685916623" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: X released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="155940780019211" type="System">
+                            <param id="0" name="Variable">X_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="353110223774976" type="Player">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Y</comment>
+                <event-block sid="958505984131984">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="198205227838773" type="Touch">
+                            <param id="0" name="Object">T_X_Y_White</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="353625047417683" type="T_X_Y_White">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="491510182020139">
+                            <conditions>
+                                <condition id="3" name="On touched object" sid="787949157279693" type="Touch">
+                                    <param id="0" name="Object">T_X_Y_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="585143895191318" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="451355028784192" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Y pressed &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="960313707216556" type="Player">
+                                    <param id="0" name="Frame number">4</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="688753026483579">
+                            <conditions>
+                                <condition id="16" name="On hold over object" sid="192342092548994" type="Touch">
+                                    <param id="0" name="Object">T_X_Y_White</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="779599358806496" type="System">
+                                    <param id="0" name="Variable">Y_HOLD</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="299306441798462">
+                            <conditions>
+                                <condition id="4" name="Is touching object" sid="634931752369858" type="Touch">
+                                    <param id="0" name="Object">T_X_Y_White</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="409073098528796" type="System">
+                                    <param id="0" name="First value">Y_HOLD</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="964389623306217" type="System">
+                                    <param id="0" name="Variable">count</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="14" name="Log" sid="410642131035186" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Y held &amp; count = &quot; &amp;count</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="935425854212731" type="Player">
+                                    <param id="0" name="Frame number">4</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="369787458108313">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="618141128167131" type="Touch">
+                            <param id="0" name="Object">T_X_Y_White</param>
+                        </condition>
+                        <condition id="-10" name="Compare opacity" sid="484133941262730" type="T_X_Y_White">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Opacity">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="325060915828159" type="T_X_Y_White">
+                            <param id="0" name="Opacity">0</param>
+                        </action>
+                        <action id="14" name="Log" sid="514893942358533" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: Y released&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="645017098411979" type="System">
+                            <param id="0" name="Variable">Y_HOLD</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="783800956809428" type="Player">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="914359585953551" title="Functions">
+            <sub-events>
+                <event-block sid="359996703514253">
+                    <conditions>
+                        <condition id="0" name="On function" sid="180557795659722" type="Function">
+                            <param id="0" name="Name">&quot;positionABXY_White&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="305702757511754">
+                            <conditions />
+                            <actions>
+                                <action id="-3" name="Set position" sid="539313603467136" type="T_X_A_White">
+                                    <param id="0" name="X">T_X_A_Color.X</param>
+                                    <param id="1" name="Y">T_X_A_Color.Y</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="392209458629857" type="T_X_A_White">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="334943276187129" type="T_X_B_White">
+                                    <param id="0" name="X">T_X_B_Color.X</param>
+                                    <param id="1" name="Y">T_X_B_Color.Y</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="940548130059311" type="T_X_B_White">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="309277631290906" type="T_X_X_White">
+                                    <param id="0" name="X">T_X_X_Color.X</param>
+                                    <param id="1" name="Y">T_X_X_Color.Y</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="143398513127150" type="T_X_X_White">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="406685783211053" type="T_X_Y_White">
+                                    <param id="0" name="X">T_X_Y_Color.X</param>
+                                    <param id="1" name="Y">T_X_Y_Color.Y</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="596238963532788" type="T_X_Y_White">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="451932010013971">
+                    <conditions>
+                        <condition id="0" name="On function" sid="443938502194028" type="Function">
+                            <param id="0" name="Name">&quot;positionDPad_White&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="172666291860891">
+                            <conditions />
+                            <actions>
+                                <action id="-4" name="Set position to another object" sid="403954631699783" type="T_X_Dpad_Up">
+                                    <param id="0" name="Object">T_X_Dpad</param>
+                                    <param id="1" name="Image point (optional)">1</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="540807675495903" type="T_X_Dpad_Up">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="944299473038780" type="T_X_Dpad_Down">
+                                    <param id="0" name="Object">T_X_Dpad</param>
+                                    <param id="1" name="Image point (optional)">2</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="373848283351815" type="T_X_Dpad_Down">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="261305438736561" type="T_X_Dpad_Left">
+                                    <param id="0" name="Object">T_X_Dpad</param>
+                                    <param id="1" name="Image point (optional)">3</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="550881831652993" type="T_X_Dpad_Left">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="181604369052718" type="T_X_Dpad_Right">
+                                    <param id="0" name="Object">T_X_Dpad</param>
+                                    <param id="1" name="Image point (optional)">4</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="943484598853179" type="T_X_Dpad_Right">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="572720598249969">
+            <conditions>
+                <condition id="16" name="Is portrait/landscape" sid="190559496280736" type="Browser">
+                    <param id="0" name="Orientation">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set layer visible" sid="446277434562104" type="System">
+                    <param id="0" name="Layer">&quot;UI&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="824342790090919" type="System">
+                    <param id="0" name="Layer">&quot;Test&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="5" name="Set frame" sid="634334139022497" type="Background">
+                    <param id="0" name="Frame number">0</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="873893103974668" type="System">
+                    <param id="0" name="Layer">&quot;Lock&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="721385100186281">
+            <conditions>
+                <condition id="16" name="Is portrait/landscape" sid="590817022593947" type="Browser">
+                    <param id="0" name="Orientation">1</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="822339556583607">
+                    <conditions>
+                        <condition id="10" inverted="1" name="Is fullscreen" sid="704549824484194" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="325689936163407" type="System">
+                            <param id="0" name="Layer">&quot;UI&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="927103626424602" type="System">
+                            <param id="0" name="Layer">&quot;Test&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="514862562831112" type="Background">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="502968456025747" type="System">
+                            <param id="0" name="Layer">&quot;Lock&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="980811177758621">
+                    <conditions>
+                        <condition id="10" name="Is fullscreen" sid="484977393842854" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="507169077856196" type="System">
+                            <param id="0" name="Layer">&quot;UI&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="635175666499329" type="System">
+                            <param id="0" name="Layer">&quot;Test&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="467817455136107" type="Background">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="128294014671190" type="System">
+                            <param id="0" name="Layer">&quot;Lock&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="561588019372043">
+            <conditions>
+                <condition id="17" name="On tap object" sid="884346377616102" type="Touch">
+                    <param id="0" name="Object">lock</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="325798856000796">
+                    <conditions>
+                        <condition id="10" inverted="1" name="Is fullscreen" sid="183995183072957" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Request fullscreen" sid="137415588186120" type="Browser">
+                            <param id="0" name="Mode">3</param>
+                        </action>
+                        <action id="18" name="Lock orientation" sid="419950117092557" type="Browser">
+                            <param id="0" name="Orientation">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="482715713251705">
+            <conditions>
+                <condition id="17" name="On tap object" sid="458101861974503" type="Touch">
+                    <param id="0" name="Object">unlock</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="378835668744740">
+                    <conditions>
+                        <condition id="10" name="Is fullscreen" sid="452393096043563" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="11" name="Cancel fullscreen" sid="110441471719688" type="Browser" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="445845102120804">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="241853438549783" type="System" />
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="833222590472673">
+                    <conditions />
+                    <actions>
+                        <action id="0" name="Set text" sid="737022954273891" type="showCount">
+                            <param id="0" name="Text">&quot;+&quot; &amp;count &amp;&quot; - PXH2910&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>
