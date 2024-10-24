@@ -33,12 +33,12 @@
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
         <prop name="Enable WebGL">On</prop>
-        <prop name="Fullscreen in browser">Letterbox integer scale</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Fullscreen scaling">High quality</prop>
-        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Loader style">Nothing (not recommended)</prop>
         <prop name="Orientations">Landscape</prop>
         <prop name="Pause on unfocus">No</prop>
-        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Physics engine">Box2D web</prop>
         <prop name="Preview browser">(default)</prop>
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
@@ -68,7 +68,7 @@
             </behaviors>
             <animation-folder>
                 <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="705590510126342" speed="0">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.500565" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\Moew.jpg" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -370,6 +370,30 @@
         </object-type>
         <object-type name="showCount" sid="988420266427358">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="Joystick" sid="117608704384713">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="378757478547563" speed="5">
+                    <frame duration="1" hotspotX="0.503311" hotspotY="0.503311" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Joystick_Center" sid="286079378455062">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="835008236325381" speed="5">
+                    <frame duration="1" hotspotX="0.509804" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="PXH" sid="849809712417833">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="574070066194897" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Admin\Downloads\PXH2910.jpg" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />

@@ -6,11 +6,19 @@
         <variable constant="0" name="STEP" sid="435846276306478" static="0" type="number">5</variable>
         <variable constant="0" name="count" sid="186748266860719" static="0" type="number">0</variable>
         <comment>Các biến D-Pad</comment>
+        <variable constant="0" name="confirmPressed_DpadUp" sid="914840919643637" static="0" type="number">0</variable>
+        <variable constant="0" name="confirmPressed_DpadDown" sid="931231657226956" static="0" type="number">0</variable>
+        <variable constant="0" name="confirmPressed_DpadLeft" sid="368520186904418" static="0" type="number">0</variable>
+        <variable constant="0" name="confirmPressed_DpadRight" sid="311712963182059" static="0" type="number">0</variable>
         <variable constant="0" name="DPadUP_HOLD" sid="623711085976298" static="0" type="number">0</variable>
         <variable constant="0" name="DPadDOWN_HOLD" sid="113943010885481" static="0" type="number">0</variable>
         <variable constant="0" name="DPadLEFT_HOLD" sid="381996845499368" static="0" type="number">0</variable>
         <variable constant="0" name="DPadRIGHT_HOLD" sid="328305088806629" static="0" type="number">0</variable>
         <comment>Các biến A, B, X, Y</comment>
+        <variable constant="0" name="confirmPressed_A" sid="207613185696988" static="0" type="number">0</variable>
+        <variable constant="0" name="confirmPressed_B" sid="738228692340122" static="0" type="number">0</variable>
+        <variable constant="0" name="confirmPressed_X" sid="282311554533430" static="0" type="number">0</variable>
+        <variable constant="0" name="confirmPressed_Y" sid="956889297807794" static="0" type="number">0</variable>
         <variable constant="0" name="A_HOLD" sid="814667144231074" static="0" type="number">0</variable>
         <variable constant="0" name="B_HOLD" sid="827040471888847" static="0" type="number">0</variable>
         <variable constant="0" name="X_HOLD" sid="711128826821358" static="0" type="number">0</variable>
@@ -32,6 +40,10 @@
                                 </action>
                                 <action id="0" name="Call function" sid="435529406855914" type="Function">
                                     <param id="0" name="Name">&quot;positionABXY_White&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="0" name="Call function" sid="117892921486685" type="Function">
+                                    <param id="0" name="Name">&quot;positionJoystick&quot;</param>
                                     <param id="1" name="Parameter {n}"></param>
                                 </action>
                             </actions>
@@ -72,6 +84,10 @@
                                 </action>
                                 <action id="-2" name="Set Y" sid="239417855661607" type="Player">
                                     <param id="0" name="Y">Self.Y - STEP</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="159976952071367" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadUp</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -120,7 +136,7 @@
                         <condition id="4" inverted="1" name="Is touching object" sid="900666401267516" type="Touch">
                             <param id="0" name="Object">T_X_Dpad_Up</param>
                         </condition>
-                        <condition id="-10" name="Compare opacity" sid="527913489560466" type="T_X_Dpad_Up">
+                        <condition id="-10" name="Compare opacity" sid="304826981539628" type="T_X_Dpad_Up">
                             <param id="0" name="Comparison">0</param>
                             <param id="1" name="Opacity">100</param>
                         </condition>
@@ -129,15 +145,32 @@
                         <action id="-16" name="Set opacity" sid="993966931805374" type="T_X_Dpad_Up">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="348774594811365" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: Dpad UP released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="290821788019973" type="System">
-                            <param id="0" name="Variable">DPadUP_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="481770521019904">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="266393263942042" type="System">
+                                    <param id="0" name="First value">confirmPressed_DpadUp</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="602906254481993" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad UP released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="135467356939849" type="System">
+                                    <param id="0" name="Variable">DPadUP_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="304401557226041" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadUp</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>D-Pad DOWN</comment>
                 <event-block sid="717455192892510">
@@ -169,6 +202,10 @@
                                 </action>
                                 <action id="-2" name="Set Y" sid="269956281556896" type="Player">
                                     <param id="0" name="Y">Self.Y + STEP</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="732813809547780" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadDown</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -226,15 +263,32 @@
                         <action id="-16" name="Set opacity" sid="118836608003474" type="T_X_Dpad_Down">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="298315390328943" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: Dpad DOWN released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="308133039660754" type="System">
-                            <param id="0" name="Variable">DPadDOWN_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="717796282379730">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="692470056537486" type="System">
+                                    <param id="0" name="First value">confirmPressed_DpadDown</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="298315390328943" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad DOWN released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="308133039660754" type="System">
+                                    <param id="0" name="Variable">DPadDOWN_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="840034958821003" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadDown</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>D-Pad LEFT</comment>
                 <event-block sid="844286539239837">
@@ -266,6 +320,10 @@
                                 </action>
                                 <action id="-1" name="Set X" sid="586527767191061" type="Player">
                                     <param id="0" name="X">Self.X - STEP</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="111902307970319" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadLeft</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -323,15 +381,32 @@
                         <action id="-16" name="Set opacity" sid="469301546757584" type="T_X_Dpad_Left">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="199050430818236" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: Dpad LEFT released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="455071465697889" type="System">
-                            <param id="0" name="Variable">DPadLEFT_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="343839144559338">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="622520931590849" type="System">
+                                    <param id="0" name="First value">confirmPressed_DpadLeft</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="199050430818236" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad LEFT released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="455071465697889" type="System">
+                                    <param id="0" name="Variable">DPadLEFT_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="697136207194327" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadLeft</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>D-Pad RIGHT</comment>
                 <event-block sid="988898472031777">
@@ -363,6 +438,10 @@
                                 </action>
                                 <action id="-1" name="Set X" sid="463547793248610" type="Player">
                                     <param id="0" name="X">Self.X + STEP</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="796874451391601" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadRight</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -420,15 +499,32 @@
                         <action id="-16" name="Set opacity" sid="393185320262358" type="T_X_Dpad_Right">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="221985325912275" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: Dpad RIGHT released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="369581615731006" type="System">
-                            <param id="0" name="Variable">DPadRIGHT_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="183766483700683">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="362031561963926" type="System">
+                                    <param id="0" name="First value">confirmPressed_DpadRight</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="221985325912275" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Dpad RIGHT released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="369581615731006" type="System">
+                                    <param id="0" name="Variable">DPadRIGHT_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="597531801539170" type="System">
+                                    <param id="0" name="Variable">confirmPressed_DpadRight</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
@@ -464,6 +560,10 @@
                                 </action>
                                 <action id="5" name="Set frame" sid="654835890833901" type="Player">
                                     <param id="0" name="Frame number">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="381505758165349" type="System">
+                                    <param id="0" name="Variable">confirmPressed_A</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -521,18 +621,35 @@
                         <action id="-16" name="Set opacity" sid="391714134941339" type="T_X_A_White">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="603581074750567" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: A released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="645496970482576" type="System">
-                            <param id="0" name="Variable">A_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="5" name="Set frame" sid="888955051274759" type="Player">
-                            <param id="0" name="Frame number">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="460666108307895">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="463398851997364" type="System">
+                                    <param id="0" name="First value">confirmPressed_A</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="603581074750567" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: A released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="645496970482576" type="System">
+                                    <param id="0" name="Variable">A_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="888955051274759" type="Player">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="720615086798121" type="System">
+                                    <param id="0" name="Variable">confirmPressed_A</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>B</comment>
                 <event-block sid="528201761523725">
@@ -564,6 +681,10 @@
                                 </action>
                                 <action id="5" name="Set frame" sid="732407940238920" type="Player">
                                     <param id="0" name="Frame number">2</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="206187680108194" type="System">
+                                    <param id="0" name="Variable">confirmPressed_B</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -621,18 +742,35 @@
                         <action id="-16" name="Set opacity" sid="632770282625780" type="T_X_B_White">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="984660201923658" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: B released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="553231536911500" type="System">
-                            <param id="0" name="Variable">B_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="5" name="Set frame" sid="209975110127119" type="Player">
-                            <param id="0" name="Frame number">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="808660231618002">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="564812494219539" type="System">
+                                    <param id="0" name="First value">confirmPressed_B</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="984660201923658" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: B released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="553231536911500" type="System">
+                                    <param id="0" name="Variable">B_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="209975110127119" type="Player">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="427283735105009" type="System">
+                                    <param id="0" name="Variable">confirmPressed_B</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>X</comment>
                 <event-block sid="145847035751847">
@@ -664,6 +802,10 @@
                                 </action>
                                 <action id="5" name="Set frame" sid="264825941967325" type="Player">
                                     <param id="0" name="Frame number">3</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="542519876812305" type="System">
+                                    <param id="0" name="Variable">confirmPressed_X</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -721,18 +863,35 @@
                         <action id="-16" name="Set opacity" sid="540707953582834" type="T_X_X_White">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="292008685916623" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: X released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="155940780019211" type="System">
-                            <param id="0" name="Variable">X_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="5" name="Set frame" sid="353110223774976" type="Player">
-                            <param id="0" name="Frame number">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="969143293515966">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="659034660495315" type="System">
+                                    <param id="0" name="First value">confirmPressed_X</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="292008685916623" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: X released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="155940780019211" type="System">
+                                    <param id="0" name="Variable">X_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="353110223774976" type="Player">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="730750576899259" type="System">
+                                    <param id="0" name="Variable">confirmPressed_X</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>Y</comment>
                 <event-block sid="958505984131984">
@@ -764,6 +923,10 @@
                                 </action>
                                 <action id="5" name="Set frame" sid="960313707216556" type="Player">
                                     <param id="0" name="Frame number">4</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="974871943422510" type="System">
+                                    <param id="0" name="Variable">confirmPressed_Y</param>
+                                    <param id="1" name="Value">1</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -821,18 +984,94 @@
                         <action id="-16" name="Set opacity" sid="325060915828159" type="T_X_Y_White">
                             <param id="0" name="Opacity">0</param>
                         </action>
-                        <action id="14" name="Log" sid="514893942358533" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;PXH: Y released&quot;</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="645017098411979" type="System">
-                            <param id="0" name="Variable">Y_HOLD</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="5" name="Set frame" sid="783800956809428" type="Player">
-                            <param id="0" name="Frame number">0</param>
-                        </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="383327137058058">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="567136404581619" type="System">
+                                    <param id="0" name="First value">confirmPressed_Y</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="514893942358533" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH: Y released&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="645017098411979" type="System">
+                                    <param id="0" name="Variable">Y_HOLD</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="783800956809428" type="Player">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="628678879970748" type="System">
+                                    <param id="0" name="Variable">confirmPressed_Y</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="853201944661678" title="Joystick">
+            <sub-events>
+                <event-block sid="723911368421181">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="293481907841736" type="Touch">
+                            <param id="0" name="Object">Joystick</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="640542425539119">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Call function" sid="787306439316378" type="Function">
+                                    <param id="0" name="Name">&quot;positionJoystick&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="-8" name="Set angle" sid="818453625156955" type="Joystick_Center">
+                                    <param id="0" name="Angle">angle(Joystick_Center.X, Joystick_Center.Y, Touch.X, Touch.Y)</param>
+                                </action>
+                                <action id="-23" name="Move at angle" sid="493494714678943" type="Joystick_Center">
+                                    <param id="0" name="Angle">Self.Angle</param>
+                                    <param id="1" name="Distance">min(distance(Touch.X, Touch.Y, Joystick_Center.X, Joystick_Center.Y) / 2, 40)</param>
+                                </action>
+                                <action id="14" name="Log" sid="906875412548792" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH X: &quot; &amp; round(Joystick_Center.X - Joystick.X) &amp; &quot; , Y: &quot; &amp; round(Joystick_Center.Y - Joystick.Y)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="162728410776014">
+                    <conditions>
+                        <condition id="4" inverted="1" name="Is touching object" sid="146527445723833" type="Touch">
+                            <param id="0" name="Object">Joystick</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="568433942984609">
+                            <conditions>
+                                <condition id="-4" name="Trigger once while true" sid="816797070972127" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="647945721230472" type="Function">
+                                    <param id="0" name="Name">&quot;positionJoystick&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                                <action id="14" name="Log" sid="353054331453258" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;PXH X: 0, Y: 0&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
@@ -924,6 +1163,25 @@
                         </event-block>
                     </sub-events>
                 </event-block>
+                <event-block sid="500728809868166">
+                    <conditions>
+                        <condition id="0" name="On function" sid="309279133011836" type="Function">
+                            <param id="0" name="Name">&quot;positionJoystick&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="221158400925303">
+                            <conditions />
+                            <actions>
+                                <action id="-4" name="Set position to another object" sid="836686691982779" type="Joystick_Center">
+                                    <param id="0" name="Object">Joystick</param>
+                                    <param id="1" name="Image point (optional)">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
             </sub-events>
         </event-group>
         <event-block sid="572720598249969">
@@ -932,23 +1190,29 @@
                     <param id="0" name="Orientation">0</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="-4" name="Set layer visible" sid="446277434562104" type="System">
-                    <param id="0" name="Layer">&quot;UI&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="824342790090919" type="System">
-                    <param id="0" name="Layer">&quot;Test&quot;</param>
-                    <param id="1" name="Visibility">0</param>
-                </action>
-                <action id="5" name="Set frame" sid="634334139022497" type="Background">
-                    <param id="0" name="Frame number">0</param>
-                </action>
-                <action id="-4" name="Set layer visible" sid="873893103974668" type="System">
-                    <param id="0" name="Layer">&quot;Lock&quot;</param>
-                    <param id="1" name="Visibility">1</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block sid="452272433757055">
+                    <conditions />
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="446277434562104" type="System">
+                            <param id="0" name="Layer">&quot;UI&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="824342790090919" type="System">
+                            <param id="0" name="Layer">&quot;Test&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="5" name="Set frame" sid="634334139022497" type="Background">
+                            <param id="0" name="Frame number">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="873893103974668" type="System">
+                            <param id="0" name="Layer">&quot;Lock&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="721385100186281">
             <conditions>
@@ -1055,7 +1319,7 @@
                     <conditions />
                     <actions>
                         <action id="0" name="Set text" sid="737022954273891" type="showCount">
-                            <param id="0" name="Text">&quot;+&quot; &amp;count &amp;&quot; - PXH2910&quot;</param>
+                            <param id="0" name="Text">&quot;+&quot; &amp;count &amp;&quot; - PXH - 2910&quot;</param>
                         </action>
                     </actions>
                 </event-block>
