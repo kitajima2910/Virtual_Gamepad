@@ -23,6 +23,9 @@
         <variable constant="0" name="B_HOLD" sid="827040471888847" static="0" type="number">0</variable>
         <variable constant="0" name="X_HOLD" sid="711128826821358" static="0" type="number">0</variable>
         <variable constant="0" name="Y_HOLD" sid="717478383997500" static="0" type="number">0</variable>
+        <comment>Các biến Joystick</comment>
+        <variable constant="0" name="confirmPressed_Joystick" sid="852014419055739" static="0" type="number">0</variable>
+        <variable constant="0" name="ACTIVE_MOVE" sid="810294552350117" static="0" type="number">50</variable>
         <event-group description="" sid="686660731372761" title="Init">
             <sub-events>
                 <event-block sid="507375604830685">
@@ -1018,61 +1021,138 @@
         </event-group>
         <event-group description="" sid="853201944661678" title="Joystick">
             <sub-events>
-                <event-block sid="723911368421181">
+                <variable constant="0" name="dx" sid="687855867872405" static="0" type="number">0</variable>
+                <variable constant="0" name="dy" sid="245110391719230" static="0" type="number">0</variable>
+                <event-block sid="640542425539119">
                     <conditions>
-                        <condition id="4" name="Is touching object" sid="293481907841736" type="Touch">
-                            <param id="0" name="Object">Joystick</param>
-                        </condition>
+                        <condition behavior="DragDrop" id="0" name="Is dragging" sid="241415411967846" type="Joystick_Clone" />
                     </conditions>
-                    <actions />
-                    <sub-events>
-                        <event-block sid="640542425539119">
-                            <conditions />
-                            <actions>
-                                <action id="0" name="Call function" sid="787306439316378" type="Function">
-                                    <param id="0" name="Name">&quot;positionJoystick&quot;</param>
-                                    <param id="1" name="Parameter {n}"></param>
-                                </action>
-                                <action id="-8" name="Set angle" sid="818453625156955" type="Joystick_Center">
-                                    <param id="0" name="Angle">angle(Joystick_Center.X, Joystick_Center.Y, Touch.X, Touch.Y)</param>
-                                </action>
-                                <action id="-23" name="Move at angle" sid="493494714678943" type="Joystick_Center">
-                                    <param id="0" name="Angle">Self.Angle</param>
-                                    <param id="1" name="Distance">min(distance(Touch.X, Touch.Y, Joystick_Center.X, Joystick_Center.Y) / 2, 40)</param>
-                                </action>
-                                <action id="14" name="Log" sid="906875412548792" type="Browser">
-                                    <param id="0" name="Type">0</param>
-                                    <param id="1" name="Message">&quot;PXH X: &quot; &amp; round(Joystick_Center.X - Joystick.X) &amp; &quot; , Y: &quot; &amp; round(Joystick_Center.Y - Joystick.Y)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
+                    <actions>
+                        <action id="-10" name="Add to" sid="573164661074332" type="System">
+                            <param id="0" name="Variable">count</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="181896901973160" type="System">
+                            <param id="0" name="Variable">confirmPressed_Joystick</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="727479299088974" type="Joystick_Center">
+                            <param id="0" name="Instance variable">dist</param>
+                            <param id="1" name="Value">min(distance(Joystick.X, Joystick.Y, Joystick_Clone.X, Joystick_Clone.Y), ACTIVE_MOVE)</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="172588665637434" type="Joystick_Center">
+                            <param id="0" name="X">(cos(angle(Joystick.X, Joystick.Y, Joystick_Clone.X, Joystick_Clone.Y)) * Self.dist) + Joystick.X</param>
+                            <param id="1" name="Y">(sin(angle(Joystick.X, Joystick.Y, Joystick_Clone.X, Joystick_Clone.Y)) * Self.dist) + Joystick.Y</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="589492690952633" type="System">
+                            <param id="0" name="Variable">dx</param>
+                            <param id="1" name="Value">round(Joystick_Center.X - Joystick.X)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="448501886837758" type="System">
+                            <param id="0" name="Variable">dy</param>
+                            <param id="1" name="Value">round(Joystick_Center.Y - Joystick.Y)</param>
+                        </action>
+                        <action id="14" name="Log" sid="906875412548792" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;PXH: Joystick pressed X = &quot; &amp; dx &amp; &quot; , Y = &quot; &amp;dy &amp;&quot; &amp; count = &quot;&amp;count</param>
+                        </action>
+                    </actions>
                 </event-block>
-                <event-block sid="162728410776014">
+                <event-block sid="328581867594540">
                     <conditions>
-                        <condition id="4" inverted="1" name="Is touching object" sid="146527445723833" type="Touch">
-                            <param id="0" name="Object">Joystick</param>
-                        </condition>
+                        <condition id="-22" name="Else" sid="818193571308525" type="System" />
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="568433942984609">
+                        <event-block sid="520608938616933">
                             <conditions>
-                                <condition id="-4" name="Trigger once while true" sid="816797070972127" type="System" />
+                                <condition id="-8" name="Compare two values" sid="167163505639745" type="System">
+                                    <param id="0" name="First value">confirmPressed_Joystick</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
                             </conditions>
                             <actions>
-                                <action id="0" name="Call function" sid="647945721230472" type="Function">
-                                    <param id="0" name="Name">&quot;positionJoystick&quot;</param>
-                                    <param id="1" name="Parameter {n}"></param>
+                                <action id="-3" name="Set position" sid="437677341425287" type="Joystick_Center">
+                                    <param id="0" name="X">Joystick.X</param>
+                                    <param id="1" name="Y">Joystick.Y</param>
+                                </action>
+                                <action id="-3" name="Set position" sid="532513375054315" type="Joystick_Clone">
+                                    <param id="0" name="X">Joystick.X</param>
+                                    <param id="1" name="Y">Joystick.Y</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="568492926512416" type="System">
+                                    <param id="0" name="Variable">confirmPressed_Joystick</param>
+                                    <param id="1" name="Value">0</param>
                                 </action>
                                 <action id="14" name="Log" sid="353054331453258" type="Browser">
                                     <param id="0" name="Type">0</param>
-                                    <param id="1" name="Message">&quot;PXH X: 0, Y: 0&quot;</param>
+                                    <param id="1" name="Message">&quot;PXH: Joystick released X: 0, Y: 0&quot;</param>
                                 </action>
                             </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
+                <event-group description="" sid="786750639659205" title="Check Player for Joystick">
+                    <sub-events>
+                        <event-block sid="612736106438013">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="762548147076868" type="System">
+                                    <param id="0" name="First value">dx</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">-ACTIVE_MOVE / 2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-1" name="Set X" sid="511719587228477" type="Player">
+                                    <param id="0" name="X">Self.X - STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="485566691515486">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="308868492995346" type="System">
+                                    <param id="0" name="First value">dx</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">ACTIVE_MOVE / 2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-1" name="Set X" sid="258345828052326" type="Player">
+                                    <param id="0" name="X">Self.X + STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="359205111996827">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="218101780881941" type="System">
+                                    <param id="0" name="First value">dy</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">-ACTIVE_MOVE / 2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="426754683415742" type="Player">
+                                    <param id="0" name="Y">Self.Y - STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="392084970258793">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="705308481263077" type="System">
+                                    <param id="0" name="First value">dy</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">ACTIVE_MOVE / 2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="349135569615161" type="Player">
+                                    <param id="0" name="Y">Self.Y + STEP</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
             </sub-events>
         </event-group>
         <event-group description="" sid="914359585953551" title="Functions">
@@ -1177,6 +1257,13 @@
                                 <action id="-4" name="Set position to another object" sid="836686691982779" type="Joystick_Center">
                                     <param id="0" name="Object">Joystick</param>
                                     <param id="1" name="Image point (optional)">0</param>
+                                </action>
+                                <action id="-4" name="Set position to another object" sid="420536259197338" type="Joystick_Clone">
+                                    <param id="0" name="Object">Joystick</param>
+                                    <param id="1" name="Image point (optional)">0</param>
+                                </action>
+                                <action id="-16" name="Set opacity" sid="888470248220783" type="Joystick_Clone">
+                                    <param id="0" name="Opacity">0</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -1320,6 +1407,60 @@
                     <actions>
                         <action id="0" name="Set text" sid="737022954273891" type="showCount">
                             <param id="0" name="Text">&quot;+&quot; &amp;count &amp;&quot; - PXH - 2910&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="974359787807922">
+            <conditions>
+                <condition id="-9" name="Layer is visible" sid="225550740417122" type="System">
+                    <param id="0" name="Layer">&quot;Lock&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="911481140217347">
+                    <conditions />
+                    <actions>
+                        <action id="-12" name="Set group active" sid="101991004559644" type="System">
+                            <param id="0" name="Group name">&quot;A, B, X, Y&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="796206358148536" type="System">
+                            <param id="0" name="Group name">&quot;D-Pad&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="247798747430760" type="System">
+                            <param id="0" name="Group name">&quot;Joystick&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="759048691609283">
+            <conditions>
+                <condition id="-9" inverted="1" name="Layer is visible" sid="932977371738075" type="System">
+                    <param id="0" name="Layer">&quot;Lock&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="132961728055424">
+                    <conditions />
+                    <actions>
+                        <action id="-12" name="Set group active" sid="569335074361408" type="System">
+                            <param id="0" name="Group name">&quot;A, B, X, Y&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="610850277094223" type="System">
+                            <param id="0" name="Group name">&quot;D-Pad&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="248795752998928" type="System">
+                            <param id="0" name="Group name">&quot;Joystick&quot;</param>
+                            <param id="1" name="State">1</param>
                         </action>
                     </actions>
                 </event-block>

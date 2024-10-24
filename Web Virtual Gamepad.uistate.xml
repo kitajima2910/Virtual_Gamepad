@@ -10,8 +10,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout active="1" order="0">Main_LO</layout>
-        <event-sheet order="1">Main_ES</event-sheet>
+        <layout order="0">Main_LO</layout>
+        <event-sheet active="1" order="1">Main_ES</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -48,5 +48,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/Joystick/" />
         <folder expanded="1" path="animation-folder/Joystick_Center/" />
         <folder expanded="1" path="animation-folder/PXH/" />
+        <folder expanded="1" path="animation-folder/Joystick_Clone/" />
     </folders-expanded>
 </c2uistate>

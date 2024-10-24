@@ -1,5 +1,5 @@
 ﻿{
-	"version": 1729745082,
+	"version": 1729782041,
 	"fileList": [
 		"data.js",
 		"c2runtime.js",
@@ -22,6 +22,10 @@
 		"images/t_x_dpad_down-sheet0.png",
 		"images/lock-sheet0.png",
 		"images/unlock-sheet0.png",
+		"images/joystick-sheet0.png",
+		"images/joystick_center-sheet0.png",
+		"images/pxh-sheet0.png",
+		"images/joystick_clone-sheet0.png",
 		"icon-16.png",
 		"icon-32.png",
 		"icon-114.png",

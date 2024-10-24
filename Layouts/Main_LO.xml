@@ -485,11 +485,41 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>420</x>
-                        <y>335</y>
+                        <x>430</x>
+                        <y>300</y>
                         <z>0</z>
-                        <width>151</width>
-                        <height>151</height>
+                        <width>180</width>
+                        <height>180</height>
+                        <depth>0</depth>
+                        <hotspotX>0.503311276</hotspotX>
+                        <hotspotY>0.503311276</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Joystick_Clone" uid="25">
+                    <properties>
+                        <initial-visibility>Visible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="DragDrop">
+                            <properties>
+                                <axes>Both</axes>
+                                <initial-state>Enabled</initial-state>
+                            </properties>
+                        </behavior-instance>
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>445</x>
+                        <y>654</y>
+                        <z>0</z>
+                        <width>150</width>
+                        <height>150</height>
                         <depth>0</depth>
                         <hotspotX>0.503311276</hotspotX>
                         <hotspotY>0.503311276</hotspotY>
@@ -504,14 +534,17 @@
                         <initial-frame>0</initial-frame>
                         <collisions>Enabled</collisions>
                     </properties>
+                    <instance-variables>
+                        <dist>0</dist>
+                    </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>423.550476074</x>
-                        <y>489.606140137</y>
+                        <x>439</x>
+                        <y>510</y>
                         <z>0</z>
-                        <width>80</width>
-                        <height>80</height>
+                        <width>120</width>
+                        <height>120</height>
                         <depth>0</depth>
                         <hotspotX>0.509803951</hotspotX>
                         <hotspotY>0.5</hotspotY>
